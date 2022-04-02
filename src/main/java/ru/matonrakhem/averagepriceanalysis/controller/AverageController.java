@@ -20,4 +20,12 @@ public class AverageController {
         model.addAttribute("pizza", pizzaService.getPizzaList());
         return "mainPage";
     }
+
+    @GetMapping("/average")
+    public String getAverage(Model model){
+        model.addAttribute("average", pizzaService.calcAveragePrice("Казань", "Пепперони"));
+        return "average";
+    }
+
+
 }
