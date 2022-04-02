@@ -55,26 +55,15 @@ public class PizzaService {
         return avgPrice;
     }
 
-    public void testAddPizza(){
+    public void testAddPizza(String pizzaName, String city, String restName, double price, double rating, double weight){
         PizzaModel model = new PizzaModel();
-        model.setPizzaName("Пепперони");
-        model.setCity("Казань");
-        model.setPrice(300);
-        model.setRating(5);
-        model.setWeight(400);
-        model.setRestaurantName("4 кухни");
+        model.setPizzaName(pizzaName);
+        model.setCity(city);
+        model.setPrice(price);
+        model.setRating(rating);
+        model.setWeight(weight);
+        model.setRestaurantName(restName);
 
         savePizzaList(model);
-
-        model.setPizzaName("Гавайская");
-        model.setCity("Казань");
-        model.setPrice(350);
-        model.setRating(4);
-        model.setWeight(450);
-        model.setRestaurantName("Хочу и буду");
-
-        savePizzaList(model);
-
-
     }
 }

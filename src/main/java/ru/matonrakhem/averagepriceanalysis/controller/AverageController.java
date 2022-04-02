@@ -16,7 +16,10 @@ public class AverageController {
 
     @GetMapping("/")
     public String mainPage(Model model){
-        pizzaService.testAddPizza();
+        pizzaService.testAddPizza("Гавайская", "Казань", "Хочу и буду", 350, 5, 400);
+        pizzaService.testAddPizza("Пепперони", "Казань", "4 кухни", 400, 4, 450);
+        pizzaService.testAddPizza("Пепперони", "Казань", "Хочу и буду", 390, 5, 350);
+
         model.addAttribute("pizza", pizzaService.getPizzaList());
         return "mainPage";
     }
