@@ -16,4 +16,5 @@ public class PizzaModel {
     private double rating;
     private String pizzaName;
     private String restaurantName;
+    private String city;
 }
