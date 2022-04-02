@@ -25,7 +25,7 @@ public class PizzaService {
         double tempPrice;
         double sumPrice = 0;
         double avgPrice;
-        int i;
+        int count = 0;
         List<Double> allPricePizza = new ArrayList<>();
         for (PizzaModel pizzaModel : pizzaModelList){
             if(pizzaModel.getPizzaName().equals(pizzaName) && pizzaModel.getCity().equals(city)){
@@ -36,12 +36,13 @@ public class PizzaService {
             allPricePizza.add(tempraryPizzaModel.getPrice());
         }
 
-        for(i = 0; i <= allPricePizza.size(); i++){
+        for(int i = 0; i <= allPricePizza.size(); i++){
+            count++;
             tempPrice = allPricePizza.get(i);
             sumPrice = tempPrice + sumPrice;
         }
 
-        avgPrice = sumPrice / i;
+        avgPrice = sumPrice / count;
 
     }
 }
