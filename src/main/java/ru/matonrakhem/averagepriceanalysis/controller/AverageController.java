@@ -4,16 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.matonrakhem.averagepriceanalysis.service.PizzaService;
+import ru.matonrakhem.averagepriceanalysis.service.SushiService;
 
 @Controller
 public class AverageController {
 
+    private final SushiService sushiService;
     private final PizzaService pizzaService;
 
-    public AverageController(PizzaService pizzaService) {
+    public AverageController(SushiService sushiService, PizzaService pizzaService) {
+        this.sushiService = sushiService;
         this.pizzaService = pizzaService;
     }
 
@@ -27,6 +29,15 @@ public class AverageController {
 
         model.addAttribute("pizza", pizzaService.getPizzaList());
         return "mainPage";
+    }
+    @GetMapping("/sushi")
+    public String sushiPage(Model model){
+        sushiService.testAddSushi("Калифорния", "Казань", "Япончик", 150, 2, 200);
+        sushiService.testAddSushi("Калифорния", "Казань", "Якитория", 250, 4, 190);
+        sushiService.testAddSushi("Калифорния", "Москва", "Аппетит", 350, 3, 200);
+        sushiService.testAddSushi("Суши с угрём", "Казань", "Якитория", 250, 5, 150);
+        sushiService.testAddSushi("Суши с угрём", "Москва", "Аппетит", 350, 4, 130);
+        sushiService.testAddSushi("Суши с угрём", "Казань", "Япончик", 250, 3, 150);
     }
 
     @GetMapping("/average")

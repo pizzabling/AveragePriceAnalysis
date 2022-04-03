@@ -58,10 +58,10 @@ public class SushiService {
         return avgPrice;
     }
 
-    /*Вытаскиваем все пиццы по фильтру: Город, название пиццы*/
+    /*Вытаскиваем все пиццы по фильтру: Город, название суши*/
     public List<SushiModel> getSushiByCityAndSushiName(String city, String name) {
         tempSushiModel.clear();
-        /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
+        /*Вытаскиваем суши, которые подходят под условия фильтра*/
         for (SushiModel sushiModel : sushiModelList) {
             if (sushiModel.getSushiName().equals(name) && sushiModel.getCity().equals(city)) {
                 tempSushiModel.add(sushiModel);
