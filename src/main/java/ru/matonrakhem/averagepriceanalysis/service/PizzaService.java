@@ -56,6 +56,7 @@ public class PizzaService {
         return avgPrice;
     }
 
+    /*Вытаскиваем все пиццы по фильтру: Город, название пиццы*/
     public List<PizzaModel> getPizzaByCityAndPizzaName(String city, String name){
         tempPizzaModel.clear();
         /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
