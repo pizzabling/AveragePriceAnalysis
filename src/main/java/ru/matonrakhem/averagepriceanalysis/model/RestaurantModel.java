@@ -15,4 +15,5 @@ public class RestaurantModel {
     private double raiting;
     private String city;
     private String name;
+    private String website;
 }
