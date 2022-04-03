@@ -21,24 +21,34 @@ public class AverageController {
 
     @GetMapping("/")
     public String mainPage(Model model){
-        pizzaService.testAddPizza("Гавайская", "Казань", "Хочу и буду", 350, 5, 400);
-        pizzaService.testAddPizza("Пепперони", "Казань", "4 кухни", 400, 4, 450);
-        pizzaService.testAddPizza("Пепперони", "Казань", "Хочу и буду", 390, 5, 350);
-        pizzaService.testAddPizza("4 сыра", "Москва", "Джипси", 5000, 3, 350);
-        pizzaService.testAddPizza("Пепперони", "Москва", "Джипси", 3000, 3, 350);
+
 
         model.addAttribute("pizza", pizzaService.getPizzaList());
         return "mainPage";
     }
     @GetMapping("/sushi")
     public String sushiPage(Model model){
+
+
+        return "sushi";
+    }
+    @GetMapping("/foodadd")
+
+    public String foodadd (){
         sushiService.testAddSushi("Калифорния", "Казань", "Япончик", 150, 2, 200);
         sushiService.testAddSushi("Калифорния", "Казань", "Якитория", 250, 4, 190);
         sushiService.testAddSushi("Калифорния", "Москва", "Аппетит", 350, 3, 200);
         sushiService.testAddSushi("Суши с угрём", "Казань", "Якитория", 250, 5, 150);
         sushiService.testAddSushi("Суши с угрём", "Москва", "Аппетит", 350, 4, 130);
         sushiService.testAddSushi("Суши с угрём", "Казань", "Япончик", 250, 3, 150);
+        pizzaService.testAddPizza("Гавайская", "Казань", "Хочу и буду", 350, 5, 400);
+        pizzaService.testAddPizza("Пепперони", "Казань", "4 кухни", 400, 4, 450);
+        pizzaService.testAddPizza("Пепперони", "Казань", "Хочу и буду", 390, 5, 350);
+        pizzaService.testAddPizza("4 сыра", "Москва", "Джипси", 5000, 3, 350);
+        pizzaService.testAddPizza("Пепперони", "Москва", "Джипси", 3000, 3, 350);
+        return "foodadd";
     }
+
 
     @GetMapping("/average")
     public String getAverage(Model model){
