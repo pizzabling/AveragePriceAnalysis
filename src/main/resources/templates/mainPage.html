@@ -25,6 +25,9 @@
                     <li class="nav-item">
                         <a class="nav-link" data-th-href="@{/average}">Пицца по городу</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-th-href="@{/filters}">Фильтры</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
@@ -52,7 +55,6 @@
     <table class="table table-responsive">
         <thead>
         <tr>
-            <th scope="row">id</th>
             <th scope="row">Город</th>
             <th scope="row">Ресторан</th>
             <th scope="row">Пицца</th>
@@ -63,7 +65,6 @@
         </thead>
         <tbody>
         <tr data-th-each="p:${pizza}">
-            <td>[[ ${p.getId()} ]]</td>
             <td>[[ ${p.getCity()} ]]</td>
             <td>[[ ${p.getRestaurantName()} ]]</td>
             <td>[[ ${p.getPizzaName()} ]]</td>

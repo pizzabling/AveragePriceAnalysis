@@ -29,16 +29,22 @@ public class AverageController {
         return "mainPage";
     }
 
-    @GetMapping("/average")
-    public String getAverage(Model model){
+    @GetMapping("/filters")
+    public String getFiltersPage(Model model){
         /*model.addAttribute("average", pizzaService.calcAveragePrice("Казань", "Пепперони"));*/
         model.addAttribute("filterByCityAndName",
                 pizzaService.getPizzaByCityAndPizzaName("Казань", "Пепперони"));
+        return "filters";
+    }
+
+    @GetMapping("/average")
+    public String getAveragePage(Model model){
+        model.addAttribute("avgPrice", pizzaService.getAvgPrice());
         return "average";
     }
     @PostMapping("/average")
     public String setAttribute(@RequestParam String city, @RequestParam String pizzaName){
-        pizzaService.calcAveragePrice("Казань", "Пепперони");
+        pizzaService.calcAveragePrice(city, pizzaName);
         return "average";
     }
 
