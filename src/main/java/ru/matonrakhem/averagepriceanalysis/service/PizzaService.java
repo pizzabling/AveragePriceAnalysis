@@ -11,6 +11,7 @@ public class PizzaService {
     private List<PizzaModel> pizzaModelList = new ArrayList<>();
     private List<PizzaModel> tempPizzaModel = new ArrayList<>();
     private long id = 0;
+    private double avgPrice;
 
     /*Берём список пицц*/
     public List<PizzaModel> getPizzaList(){
@@ -23,11 +24,10 @@ public class PizzaService {
         id++;
     }
     /*Считаем средний ценник по пиццам. Фильтр: город, название пиццы*/
-    public double calcAveragePrice(String city, String pizzaName){
+    public void calcAveragePrice(String city, String pizzaName){
         tempPizzaModel.clear();
         double tempPrice;
         double sumPrice = 0;
-        double avgPrice;
         int count = 0;
         /*Объявляем новый список с ценниками пицц*/
         List<Double> allPricePizza = new ArrayList<>();
@@ -51,8 +51,9 @@ public class PizzaService {
         }
         /*Считаем средний ценник пицц, которые попали под условия фильтра*/
         avgPrice = sumPrice / count;
+    }
 
-        /*Возвращаем средний ценник*/
+    public double getAvgPrice(){
         return avgPrice;
     }
 

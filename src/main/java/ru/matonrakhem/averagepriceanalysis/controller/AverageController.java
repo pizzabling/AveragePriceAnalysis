@@ -28,13 +28,10 @@ public class AverageController {
     }
     @GetMapping("/sushi")
     public String sushiPage(Model model){
-
-
         return "sushi";
     }
     @GetMapping("/foodadd")
-
-    public String foodadd (){
+    public String foodAdd (){
         sushiService.testAddSushi("Калифорния", "Казань", "Япончик", 150, 2, 200);
         sushiService.testAddSushi("Калифорния", "Казань", "Якитория", 250, 4, 190);
         sushiService.testAddSushi("Калифорния", "Москва", "Аппетит", 350, 3, 200);
