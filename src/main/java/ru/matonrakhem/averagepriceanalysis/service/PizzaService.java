@@ -24,6 +24,7 @@ public class PizzaService {
     }
     /*Считаем средний ценник по пиццам. Фильтр: город, название пиццы*/
     public double calcAveragePrice(String city, String pizzaName){
+        tempPizzaModel.clear();
         double tempPrice;
         double sumPrice = 0;
         double avgPrice;
@@ -43,7 +44,7 @@ public class PizzaService {
             allPricePizza.add(tempraryPizzaModel.getPrice());
         }
         /*Рассчитываем сумму пицц, которые попали под условия фильтра */
-        for(int i = 0; i <= allPricePizza.size(); i++){
+        for(int i = 0; i < allPricePizza.size(); i++){
             count++;
             tempPrice = allPricePizza.get(i);
             sumPrice = tempPrice + sumPrice;
@@ -53,6 +54,17 @@ public class PizzaService {
 
         /*Возвращаем средний ценник*/
         return avgPrice;
+    }
+
+    public List<PizzaModel> getPizzaByCityAndPizzaName(String city, String name){
+        tempPizzaModel.clear();
+        /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
+        for (PizzaModel pizzaModel : pizzaModelList){
+            if(pizzaModel.getPizzaName().equals(name) && pizzaModel.getCity().equals(city)){
+                tempPizzaModel.add(pizzaModel);
+            }
+        }
+        return tempPizzaModel;
     }
 
     public void testAddPizza(String pizzaName, String city, String restName, double price, double rating, double weight){
