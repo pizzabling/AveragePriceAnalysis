@@ -13,17 +13,19 @@ public class PizzaService {
     private long id = 0;
 
     /*Берём список пицц*/
-    public List<PizzaModel> getPizzaList(){
+    public List<PizzaModel> getPizzaList() {
         return pizzaModelList;
     }
+
     /*Сейвим пиццу*/
-    public void savePizzaList(PizzaModel model){
+    public void savePizzaList(PizzaModel model) {
         model.setId(id);
         pizzaModelList.add(model);
         id++;
     }
+
     /*Считаем средний ценник по пиццам. Фильтр: город, название пиццы*/
-    public double calcAveragePrice(String city, String pizzaName){
+    public double calcAveragePrice(String city, String pizzaName) {
         tempPizzaModel.clear();
         double tempPrice;
         double sumPrice = 0;
@@ -33,18 +35,18 @@ public class PizzaService {
         List<Double> allPricePizza = new ArrayList<>();
 
         /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
-        for (PizzaModel pizzaModel : pizzaModelList){
-            if(pizzaModel.getPizzaName().equals(pizzaName) && pizzaModel.getCity().equals(city)){
+        for (PizzaModel pizzaModel : pizzaModelList) {
+            if (pizzaModel.getPizzaName().equals(pizzaName) && pizzaModel.getCity().equals(city)) {
                 tempPizzaModel.add(pizzaModel);
             }
         }
 
         /*Вытаскиваем все ценники пицц, которые попали под условия фильтра*/
-        for (PizzaModel tempraryPizzaModel : tempPizzaModel){
+        for (PizzaModel tempraryPizzaModel : tempPizzaModel) {
             allPricePizza.add(tempraryPizzaModel.getPrice());
         }
         /*Рассчитываем сумму пицц, которые попали под условия фильтра */
-        for(int i = 0; i < allPricePizza.size(); i++){
+        for (int i = 0; i < allPricePizza.size(); i++) {
             count++;
             tempPrice = allPricePizza.get(i);
             sumPrice = tempPrice + sumPrice;
@@ -57,18 +59,18 @@ public class PizzaService {
     }
 
     /*Вытаскиваем все пиццы по фильтру: Город, название пиццы*/
-    public List<PizzaModel> getPizzaByCityAndPizzaName(String city, String name){
+    public List<PizzaModel> getPizzaByCityAndPizzaName(String city, String name) {
         tempPizzaModel.clear();
         /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
-        for (PizzaModel pizzaModel : pizzaModelList){
-            if(pizzaModel.getPizzaName().equals(name) && pizzaModel.getCity().equals(city)){
+        for (PizzaModel pizzaModel : pizzaModelList) {
+            if (pizzaModel.getPizzaName().equals(name) && pizzaModel.getCity().equals(city)) {
                 tempPizzaModel.add(pizzaModel);
             }
         }
         return tempPizzaModel;
     }
 
-    public void testAddPizza(String pizzaName, String city, String restName, double price, double rating, double weight){
+    public void testAddPizza(String pizzaName, String city, String restName, double price, double rating, double weight) {
         PizzaModel model = new PizzaModel();
         model.setPizzaName(pizzaName);
         model.setCity(city);
@@ -78,5 +80,16 @@ public class PizzaService {
         model.setRestaurantName(restName);
 
         savePizzaList(model);
+    }
+
+    public List<PizzaModel> getPizzaByRestaurantAndPizzaName(String restaurant, String name) {
+        tempPizzaModel.clear();
+        /*Вытаскиваем пиццы, которые подходят под условия фильтра*/
+        for (PizzaModel pizzaModel : pizzaModelList) {
+            if (pizzaModel.getPizzaName().equals(name) && pizzaModel.getCity().equals(restaurant)) {
+                tempPizzaModel.add(pizzaModel);
+            }
+        }
+        return tempPizzaModel;
     }
 }
